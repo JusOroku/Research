@@ -18,12 +18,26 @@ save_boxplot <- function(files_list, directory) {
     #jpeg(file = plot_name)
     boxplot_data = boxplot(mydata[["score"]], main = main_name, plot = FALSE)
     #dev.off()
+    total_length = length(mydata[["score"]])
+    outlier_length = length(boxplot_data$out)
+    append_length = total_length - outlier_length
+    #because score of [1] >= [2], if [2] is a outlier, 1 is also a outlier
+    one_value_list <- rep_len(1, outlier_length)
+    zero_value_list <- rep_len(0,append_length)
+    outlier_boolean_matrix <- matrix(c(one_value_list,zero_value_list),
+                                     nrow = total_length,
+                                     ncol = 1)
+    
+    
+    
+    
     
   #}
-    return(boxplot_data)
+    
+    return(outlier_boolean_matrix)
 }
 
 
 
 a = save_boxplot(files_list, directory)
-a$stats[5,]
+a
