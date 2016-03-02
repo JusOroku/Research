@@ -1,7 +1,7 @@
 library(ade4)
 library(cluster)
 library(fpc)
-files_list <- "../Library_Page/category_score/"
+files_list <- "../../Library_Page/category_score/"
 
 directory <- list.files(path = files_list)
 
@@ -26,7 +26,7 @@ get_best_k <- function(score_data) {
 }
 
 get_silhouette_value <- function(files_list,directory){
-  path <- "../Library_Page/kmeans/"
+  path <- "../../Library_Page/kmeans/"
   x_name <- "cluster"
   y_name <- "width"
   for(i in 1:length(directory)){

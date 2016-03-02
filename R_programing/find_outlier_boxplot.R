@@ -1,7 +1,7 @@
 library(ade4)
 library(cluster)
 library(fpc)
-files_list <- "../Library_Page/category_score/"
+files_list <- "../../Library_Page/category_score/"
 
 directory <- list.files(path = files_list)
 
