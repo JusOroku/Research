@@ -31,6 +31,24 @@ read_silhouette_value <- function(){
   a = paste(kmeans_files_list, kmeans_directory[1], sep = "")
   print(a)
   mydata <- read.csv(a)
+  cluster = mydata[["cluster"]]
+  silhouette_width = mydata[["width"]]
+  print(cluster)
+  print(silhouette_width)
+  duplicate_list = unique(cluster[duplicated(cluster)])
+  print(duplicate_list)
+  outlier_value_list = rep_len(0, length(cluster))
+  for(i in 1:length(silhouette_width)) {
+    if(silhouette_width[i] < 0){
+      outlier_value_list[i] <- 1
+      next
+    }
+    if(!(cluster[i] %in% duplicate_list)){
+      outlier_value_list[i] <- 1
+      next
+    }
+  }
+  return(outlier_value_list)
 }
 
 read_MADN_data <- function(){
@@ -44,7 +62,6 @@ read_MADN_data <- function(){
     if(mydata[["k_MADN"]][i] > 2.24) {
       outlier_value_list[i] <- 1
     }
-    print(outlier_value_list)
   }
   
   outlier_boolean_matrix <- matrix(outlier_value_list,
@@ -54,5 +71,6 @@ read_MADN_data <- function(){
 }
 a = save_boxplot(files_list, directory)
 b = read_MADN_data()
-a
-b
+c = read_silhouette_value()
+d = cbind(a,b,c)
+print(d)
