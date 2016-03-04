@@ -67,8 +67,31 @@ read_MADN_data <- function(file_name){
   return(outlier_boolean_matrix)
 }
 
-a = save_boxplot(directory[5])
-b = read_MADN_data(directory[5])
-c = read_silhouette_value(directory[5])
-d = cbind(a,b,c)
-print(d)
+vote_outlier <- function(file_path){
+  boxplot_outputs = save_boxplot(file_path)
+  MADN_outputs = read_MADN_data(file_path)
+  kmeans_outputs = read_silhouette_value(file_path)
+  outputs_matrix = cbind(boxplot_outputs,MADN_outputs,kmeans_outputs)
+  outputs_list = rowSums(outputs_matrix)
+  summary_outlier_list = rep_len(0, length(outputs_list))
+  for(i in 1:length(summary_outlier_list)) {
+    if(outputs_list[i] > 1) {
+      summary_outlier_list[i] <- 1
+    }
+  }
+ if(sum(summary_outlier_list) == 1) {
+   return("Not Competitive")
+ }
+  else {
+    return("Competitive")
+  }
+}
+
+summary_list = rep_len(TRUE, length(directory))
+
+for(i in 1:length(summary_list)) {
+  summary_list[i] <- vote_outlier(directory[i])
+}
+print(table(summary_list))
+
+
