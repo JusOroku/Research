@@ -1,11 +1,11 @@
 library(lme4)
 library(influence.ME)
-files_list <- "../Library_Page/category_score/"
+files_list <- "../../Library_Page/category_score/"
 
 directory <- list.files(path = files_list)
 
 Median_absolute_deviation_N <- function(files_list, directory) {
-  path <- "../Library_Page/MADN/"
+  path <- "../../Library_Page/MADN/"
   x_name <- "index"
   y_name <- "k_MADN"
   for(i in 1:length(directory)){

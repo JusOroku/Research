@@ -1,16 +1,15 @@
 library(ade4)
 library(cluster)
 library(fpc)
-files_list <- "../../Library_Page/category_score/"
 
+files_list <- "../../Library_Page/kmeans/"
 directory <- list.files(path = files_list)
 
-
-save_boxplot <- function(files_list, directory) {
-  #for(i in 1:length(directory)){
-    a = paste(files_list, directory[1], sep = "")
-    print(a)
-    mydata <- read.csv(a)
+save_boxplot <- function(file_name) {
+    score_folder_path = "../../Library_Page/category_score/"
+    file_path = paste(score_folder_path, file_name, sep = "")
+    print(file_path)
+    mydata <- read.csv(file_path)
     boxplot_data = boxplot(mydata[["score"]], plot = FALSE)
     total_length = length(mydata[["score"]])
     outlier_length = length(boxplot_data$out)
@@ -25,12 +24,11 @@ save_boxplot <- function(files_list, directory) {
     return(outlier_boolean_matrix)
 }
 
-read_silhouette_value <- function(){
-  kmeans_files_list <- "../../Library_Page/kmeans/"
-  kmeans_directory <- list.files(path = kmeans_files_list)
-  a = paste(kmeans_files_list, kmeans_directory[1], sep = "")
-  print(a)
-  mydata <- read.csv(a)
+read_silhouette_value <- function(file_name){
+  kmeans_folder_path = "../../Library_Page/kmeans/"
+  file_path = paste(kmeans_folder_path, file_name, sep = "")
+  print(file_path)
+  mydata <- read.csv(file_path)
   cluster = mydata[["cluster"]]
   silhouette_width = mydata[["width"]]
   print(cluster)
@@ -51,12 +49,11 @@ read_silhouette_value <- function(){
   return(outlier_value_list)
 }
 
-read_MADN_data <- function(){
-  MADN_files_list <- "../../Library_Page/MADN/"
-  MADN_directory <- list.files(path = MADN_files_list)
-  a = paste(MADN_files_list, MADN_directory[1], sep = "")
-  print(a)
-  mydata <- read.csv(a)
+read_MADN_data <- function(file_name){
+  MADN_folder_path = "../../Library_Page/MADN/"
+  file_path = paste(MADN_folder_path, file_name, sep = "")
+  print(file_path)
+  mydata <- read.csv(file_path)
   outlier_value_list = rep_len(0, length(mydata[["k_MADN"]]))
   for(i in 1:length(mydata[["k_MADN"]])) {
     if(mydata[["k_MADN"]][i] > 2.24) {
@@ -69,8 +66,9 @@ read_MADN_data <- function(){
                                    ncol = 1)
   return(outlier_boolean_matrix)
 }
-a = save_boxplot(files_list, directory)
-b = read_MADN_data()
-c = read_silhouette_value()
+
+a = save_boxplot(directory[5])
+b = read_MADN_data(directory[5])
+c = read_silhouette_value(directory[5])
 d = cbind(a,b,c)
 print(d)
