@@ -8,7 +8,7 @@ directory <- list.files(path = files_list)
 save_boxplot <- function(file_name) {
     score_folder_path = "../../Library_Page/category_score/"
     file_path = paste(score_folder_path, file_name, sep = "")
-    print(file_path)
+    #print(file_path)
     mydata <- read.csv(file_path)
     boxplot_data = boxplot(mydata[["score"]], plot = FALSE)
     total_length = length(mydata[["score"]])
@@ -27,14 +27,14 @@ save_boxplot <- function(file_name) {
 read_silhouette_value <- function(file_name){
   kmeans_folder_path = "../../Library_Page/kmeans/"
   file_path = paste(kmeans_folder_path, file_name, sep = "")
-  print(file_path)
+  #print(file_path)
   mydata <- read.csv(file_path)
   cluster = mydata[["cluster"]]
   silhouette_width = mydata[["width"]]
-  print(cluster)
-  print(silhouette_width)
+  #print(cluster)
+  #print(silhouette_width)
   duplicate_list = unique(cluster[duplicated(cluster)])
-  print(duplicate_list)
+  #print(duplicate_list)
   outlier_value_list = rep_len(0, length(cluster))
   for(i in 1:length(silhouette_width)) {
     if(silhouette_width[i] < 0){
@@ -52,7 +52,7 @@ read_silhouette_value <- function(file_name){
 read_MADN_data <- function(file_name){
   MADN_folder_path = "../../Library_Page/MADN/"
   file_path = paste(MADN_folder_path, file_name, sep = "")
-  print(file_path)
+  #print(file_path)
   mydata <- read.csv(file_path)
   outlier_value_list = rep_len(0, length(mydata[["k_MADN"]]))
   for(i in 1:length(mydata[["k_MADN"]])) {
@@ -87,11 +87,20 @@ vote_outlier <- function(file_path){
   }
 }
 
-summary_list = rep_len(TRUE, length(directory))
-
-for(i in 1:length(summary_list)) {
-  summary_list[i] <- vote_outlier(directory[i])
+vote_outlier_check <- function(file_path){
+  boxplot_outputs = save_boxplot(file_path)
+  MADN_outputs = read_MADN_data(file_path)
+  kmeans_outputs = read_silhouette_value(file_path)
+  outputs_matrix = cbind(boxplot_outputs,MADN_outputs,kmeans_outputs)
+  outputs_list = rowSums(outputs_matrix)
+  summary_outlier_list = rep_len(0 , length(outputs_list))
+  for(i in 1:length(summary_outlier_list)) {
+    if(outputs_list[i] > 1) {
+      summary_outlier_list[i] <- 1
+    }
+  }
+  return(summary_outlier_list) 
 }
-print(table(summary_list))
+
 
 
