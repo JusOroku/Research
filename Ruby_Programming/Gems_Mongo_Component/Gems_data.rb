@@ -5,8 +5,8 @@ require 'nokogiri'
 class Gems_data
   attr_reader :rubygems_data, :bestgems_data, :gem_name, :gem_description, :gem_size, :gem_license, :require_ruby_version, :boolean_array, :gem_total_download, :gem_ranking, :gem_author, :gem_owners, :gem_development_dependencies, :download_array, :ranking_array, :history_array
   def initialize(gem_name)
-      @rubygems_data = get_rubygems_body("/Volumes/Data/Ruby Project/Library_Page/rubygems/#{gem_name}")
-      @bestgems_data = open_files_nokogiri("/Volumes/Data/Ruby Project/Library_Page/bestgems/#{gem_name}")
+      @rubygems_data = get_rubygems_body("../Library_Page/rubygems/#{gem_name}")
+      @bestgems_data = open_files_nokogiri("../Library_Page/bestgems/#{gem_name}")
       @gem_name = get_gem_name(rubygems_data)
       @gem_description = get_gem_description(@rubygems_data)
       @gem_size = get_gem_size(@rubygems_data)

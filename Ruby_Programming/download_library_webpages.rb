@@ -17,8 +17,8 @@ end
 def download_gems_page (csv_array, start_page, end_page)
   bestgems_web_url = "http://bestgems.org/gems/"
   rubygems_web_url = "https://rubygems.org/gems/"
-  bestgems_directory = "/Volumes/Data/Ruby Project/Library_Page/bestgems/"
-  rubygems_directory = "/Volumes/Data/Ruby Project/Library_Page/rubygems/"
+  bestgems_directory = "../Library_Page/bestgems/"
+  rubygems_directory = "../Library_Page/rubygems/"
   random_module = Random.new
   base_time = 5
   error_check = start_page - 1
@@ -46,7 +46,7 @@ end
 # bestgems_web_url = "http://bestgems.org/gems/"
 # rubygems_web_url = "https://rubygems.org/gems/"
 # bestgems_directory = "/Volumes/Data/Ruby Project/Library_Page/"
-csv_directory_path = "/Volumes/Data/Ruby Project/CSV/data_CSV.csv"
+csv_directory_path = "../CSV/data_CSV.csv"
 base_time = 2
 index = 1
 

@@ -1,13 +1,14 @@
-  source("vote_outlier_160302.R")
+source("vote_outlier_160302.R")
   
+save_outlier_status <- function(directory){
   summary_list = rep_len(TRUE, length(directory))
   x_axis_name = "name"
   y_axis_name = "status"
   outlier_folder_path = "../../Library_Page/outlier_status/"
   name_folder_path = "../../Library_Page/category_score/"
-  
-  for(i in 1:length(summary_list)) {
     
+  for(i in 1:length(summary_list)) {
+      
     file_path = paste(name_folder_path, directory[i], sep = "")
     name_data <- read.csv(file_path)
     name = name_data[["name"]]
@@ -16,5 +17,6 @@
     save_data = data.frame(name, outlier_list)
     names(save_data) <- c(x_axis_name, y_axis_name)
     write.csv(x=save_data, file = outlier_file_name, row.names = FALSE)
-    
   }
+}
+  

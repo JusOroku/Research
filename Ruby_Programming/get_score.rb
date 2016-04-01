@@ -31,14 +31,14 @@ def get_name(document)
 end
 
 
-files = Dir.entries("Library_Page/toolbox_category/")
+files = Dir.entries("../Library_Page/toolbox_category/")
 for i in 3...files.length do
-   doc = get_content_data("Library_Page/toolbox_category/#{files[i]}")
+   doc = get_content_data("../Library_Page/toolbox_category/#{files[i]}")
    name = get_name(doc)
    score = get_score(doc)
    file_name = files[i].to_s
    file_name = file_name[0..-6]
-    CSV.open("Library_Page/category_score/#{file_name}.csv", 'wb') do |csv|
+    CSV.open("../Library_Page/category_score/#{file_name}.csv", 'wb') do |csv|
       csv << ["name","score"]
       for j in 0...name.length-1 do
         csv << ["#{name[j]}","#{score[j]}"]

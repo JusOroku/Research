@@ -52,7 +52,7 @@ def get_data_into_array(text_data)
   return data_array
 end
 
-file_directory = "/Volumes/Data/Ruby Project/Library_Page/totalgems.html"
+file_directory = "../Library_Page/totalgems.html"
 web_doc = get_web_page(file_directory)
 a = get_download_array_data(web_doc)
 array = get_data_into_array(a)

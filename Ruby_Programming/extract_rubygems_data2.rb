@@ -107,7 +107,7 @@ def get_gem_item_list(document_file)
 end
 
 #Main method
-file_directory = "/Volumes/Data/Ruby Project/Library_Page/rubygems/308_hoe.html"
+file_directory = "../Library_Page/rubygems/308_hoe.html"
 test_extract = get_data(file_directory)
 gem_name = get_gem_name(test_extract)
 gem_description = get_gem_description(test_extract)

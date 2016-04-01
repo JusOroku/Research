@@ -14,7 +14,7 @@ end
 
 base_web_url = "http://bestgems.org/total?page="
 random_module = Random.new
-file_directory = "/Volumes/Data/Ruby Project/Summary/"
+file_directory = "../Summary/"
 base_time = 2
 for page in 1501..5474 do
   doc = open_web(base_web_url + page.to_s)

@@ -56,7 +56,7 @@ rank_array = Array.new
 total_download_array = Array.new
 name_array = Array.new
 summary_array = Array.new
-file_directory = "/Volumes/Data/Ruby Project/Summary/"
+file_directory = "../Summary/"
 for i in 1..5474
   # define path to summary_files_folder
   table_object = get_table_data(file_directory,i)
@@ -66,5 +66,5 @@ for i in 1..5474
   push_data_into_array(table_object,rank_array,total_download_array,name_array,summary_array)
 end
 #Write All of Array into CSV
-csv_files_name = "/Volumes/Data/Ruby Project/CSV/data_CSV.csv"
+csv_files_name = "../CSV/data_CSV.csv"
 write_data_into_csv(csv_files_name,rank_array,total_download_array,name_array,summary_array)

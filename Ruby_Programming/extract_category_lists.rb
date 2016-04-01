@@ -31,7 +31,7 @@ def write_files (copy_web_page,directory,web_name)
   output_file.write(web_document)
 end
 
-file_directory = "/Volumes/Data/Ruby Project/toolbox_category.html"
+file_directory = "../toolbox_category.html"
 web_page = get_content_data(file_directory)
 
 category_link = Array.new
@@ -48,7 +48,7 @@ web_page.each do |link|
   i = i+1
 end
 
-folder_path = "/Volumes/Data/Ruby Project/Library_Page/toolbox_category/"
+folder_path = "../Library_Page/toolbox_category/"
 for i in 0...category_link.length do
   puts category_link[i]
   puts category_name[i]

@@ -36,7 +36,7 @@ end
 
 
 
-files = Dir.entries("Library_Page/rubygems/")
+files = Dir.entries("../Library_Page/rubygems/")
 puts files[7282]
 insert_all(files,3)
 ##Error 7280

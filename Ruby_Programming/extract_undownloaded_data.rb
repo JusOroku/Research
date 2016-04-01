@@ -3,7 +3,7 @@ require 'csv'
 #Main method
 number_array = Array.new(109477,0)
 
-file_directory = "/Volumes/Data/Ruby Project/Library_Page/rubygems/"
+file_directory = "../Library_Page/rubygems/"
 all_gems_files = Dir.entries(file_directory)
 all_gems_files.each do |items|
   text = items.split("_")

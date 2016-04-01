@@ -17,8 +17,8 @@ end
 def download_gems_page (name_array, number_array)
   bestgems_web_url = "http://bestgems.org/gems/"
   rubygems_web_url = "https://rubygems.org/gems/"
-  bestgems_directory = "/Volumes/Data/Ruby Project/Library_Page/bestgems/"
-  rubygems_directory = "/Volumes/Data/Ruby Project/Library_Page/rubygems/"
+  bestgems_directory = "../Library_Page/bestgems/"
+  rubygems_directory = "../Library_Page/rubygems/"
   random_module = Random.new
   base_time = 5
     for i in 0...name_array.length do
