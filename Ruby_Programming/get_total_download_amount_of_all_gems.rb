@@ -1,5 +1,8 @@
 require 'nokogiri'
 require 'csv'
+
+#gets total download number
+
 def open_files_nokogiri(file_name)
   doc = File.open(file_name) { |f| Nokogiri::HTML(f)}
   return doc

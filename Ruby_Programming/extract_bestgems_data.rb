@@ -1,5 +1,8 @@
 require 'nokogiri'
 require 'csv'
+
+#get gems attribute from bestgems website
+#this is prototype almost all method was used in Gems_data.rb
 def open_files_nokogiri(file_name)
   doc = File.open(file_name) { |f| Nokogiri::HTML(f)}
   return doc
@@ -86,11 +89,7 @@ file_directory = "../Library_Page/bestgems/1_rake.html"
 web_doc = get_web_page(file_directory)
 total_download = get_total_download(web_doc)
 total_ranking = get_total_ranking(web_doc)
-puts total_download
-puts total_ranking
 daily_download_extract = get_download_array_data(web_doc)
 daily_rank_extract = get_ranking_array_data(web_doc)
 download_array = get_data_into_array(daily_download_extract)
 ranking_array = get_data_into_array(daily_rank_extract)
-puts download_array[5]
-#puts ranking_array

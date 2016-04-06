@@ -1,6 +1,8 @@
 require 'nokogiri'
 require 'open-uri'
 
+#crawled bestgems.org to get summary of RubyGems ecosystem
+
 def open_web(web_name)
   doc = Nokogiri::HTML(open(web_name))
   return doc

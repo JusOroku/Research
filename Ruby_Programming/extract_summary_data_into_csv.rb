@@ -1,5 +1,7 @@
 require 'nokogiri'
 require 'csv'
+
+#change each data in bestgems summary pages into csv files 
 def open_files_nokogiri(file_name)
   doc = File.open(file_name) { |f| Nokogiri::HTML(f)}
   return doc

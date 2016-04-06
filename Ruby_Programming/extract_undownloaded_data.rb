@@ -1,6 +1,12 @@
 require 'nokogiri'
 require 'csv'
+
+#because some pages from bestgems websites cvannot be download this ruby file
+#was used to detected undownloaded file
 #Main method
+
+
+
 number_array = Array.new(109477,0)
 
 file_directory = "../Library_Page/rubygems/"

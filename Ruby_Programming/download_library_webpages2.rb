@@ -2,6 +2,10 @@ require 'nokogiri'
 require 'open-uri'
 require 'csv'
 
+
+#this is the specific file because some of germs cannot be downloaded automatically
+#by download_library_webpages.rb 
+
 def open_web(web_name)
   doc = Nokogiri::HTML(open(web_name))
   return doc

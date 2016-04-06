@@ -1,5 +1,8 @@
 require 'nokogiri'
 require 'csv'
+
+#get gems attribute from rubygems website
+#this is prototype almost all method was used in Gems_data.rb
 def open_files_nokogiri(file_name)
   doc = File.open(file_name) { |f| Nokogiri::HTML(f)}
   return doc

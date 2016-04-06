@@ -1,6 +1,9 @@
 require 'csv'
 
 
+#distinguish between outlier and non outlier and save into outlier.csv and
+#non_outlier.csv
+
 
 def distinguish_gem(file_path)
   outlier_files_path = "../Library_Page/outlier.csv"

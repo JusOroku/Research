@@ -2,6 +2,10 @@ require 'nokogiri'
 require 'open-uri'
 require 'csv'
 
+
+#crawling each gems webpage from rubygems and bestgems and save them into html
+#files
+
 def open_web(web_name)
   doc = Nokogiri::HTML(open(web_name))
   return doc
