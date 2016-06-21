@@ -15,7 +15,7 @@ save_outlier_status <- function(directory){
       if(name_data[["status"]][l] == "1") {
         #print(name_data[["name"]][l])
         count = count + 1
-        gems_list[count] <- name_data$name[1]atom
+        gems_list[count] <- name_data$name[1]
       }
     }
   }

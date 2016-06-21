@@ -13,8 +13,8 @@ Median_absolute_deviation_N <- function(files_list, directory) {
     csv_data <- read.csv(a)
     score <- csv_data[["score"]]
     score_data = data.frame(score)
-    score_mad = mad(score)
-    score_madn = score_mad/0.6745
+    score_madn = mad(score)
+    #score_madn = score_mad/0.6745
     k_vector = c()
     index_vector = c()
     score_median = median(score)

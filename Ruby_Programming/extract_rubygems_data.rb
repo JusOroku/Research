@@ -35,7 +35,9 @@ end
 def get_gem_description (document_file)
   description_tag_name = '//div[@class="gem__intro"]//div[@class="gem__desc"]//p'
   gem_description = extract_from_tag(document_file,description_tag_name)
-  return gem_description.children #Text
+  description_string =  gem_description.children.to_s #Text
+  puts description_string.split.length
+  return description_string.split.length
 end
 
 def get_gem_size(document_file)

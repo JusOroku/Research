@@ -50,11 +50,12 @@ former_outlier_files_path = "../Library_Page/outlier.csv"
 former_non_outlier_files_path = "../Library_Page/non_outlier.csv"
 new_outlier_files_path = "../Library_Page/new_outlier.csv"
 new_non_outlier_files_path = "../Library_Page/new_non_outlier.csv"
+combi_file_path = "../Library_Page/gems_list.csv"
 CSV.foreach(former_outlier_files_path) do |row|
-  puts "#{gems_name_hash[row[0]]}"
-  CSV.open(new_outlier_files_path, "a+") do |csv|
-    csv << ["#{gems_name_hash[row[0]]}"]
-  end
+   puts "#{gems_name_hash[row[0]]}"
+   CSV.open(combi_file_path, "a+") do |csv|
+     csv << ["#{gems_name_hash[row[0]]}"]
+   end
 end
 
  CSV.foreach(former_non_outlier_files_path) do |row|
@@ -62,7 +63,7 @@ end
      next
    end
    puts "#{row[0]} #{gems_name_hash[row[0]]}"
-   CSV.open(new_non_outlier_files_path, "a+") do |csv|
-     csv << ["#{gems_name_hash[row[0]]}"]
-   end
+    CSV.open(combi_file_path, "a+") do |csv|
+      csv << ["#{gems_name_hash[row[0]]}"]
+    end
  end

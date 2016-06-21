@@ -12,7 +12,7 @@ end
 
 ##real method
 def insert_gems_object_into_mongo(gem_object,id)
-  $client[:rubygem].insert_one({gem_id: id, gem_name: gem_object.gem_name.to_s, gem_description: gem_object.gem_description.to_s, gem_size: gem_object.gem_size, gem_license: gem_object.gem_license.to_s, require_ruby_version: gem_object.require_ruby_version.to_s, homepage: gem_object.boolean_array["homepage"], documentation: gem_object.boolean_array["documentation"], source_code: gem_object.boolean_array["source_code"], bug_tracker: gem_object.boolean_array["bug_tracker"], current_total_download: gem_object.gem_total_download.to_i, ranking: gem_object.gem_ranking.to_i, authors: gem_object.gem_author, owners: gem_object.gem_owners, dependencies: gem_object.gem_development_dependencies, history: gem_object.history_array})
+  $client[:rubygem_revised2].insert_one({gem_id: id, gem_name: gem_object.gem_name.to_s, gem_description: gem_object.gem_description.to_s, gem_size: gem_object.gem_size, gem_license: gem_object.gem_license.to_s, require_ruby_version: gem_object.require_ruby_version.to_s, homepage: gem_object.boolean_array["homepage"], documentation: gem_object.boolean_array["documentation"], source_code: gem_object.boolean_array["source_code"], bug_tracker: gem_object.boolean_array["bug_tracker"], current_total_download: gem_object.gem_total_download.to_i, ranking: gem_object.gem_ranking.to_i, authors: gem_object.gem_author, owners: gem_object.gem_owners, dependencies: gem_object.gem_development_dependencies, history: gem_object.history_array})
 end
 
 def insert_all (files,index)
@@ -24,10 +24,11 @@ def insert_all (files,index)
     id_integer = id_array[0].to_i
     gem_object = Gems_data.new(files[i])
     puts gem_object.gem_name
-    insert_gems_object_into_mongo(gem_object, id_integer)
+    break
+    #insert_gems_object_into_mongo(gem_object, id_integer)
   end
   rescue
-    insert_all(files, check_index+1)
+    #insert_all(files, check_index+1)
   end
 end
 
@@ -38,7 +39,6 @@ end
 
 
 files = Dir.entries("../Library_Page/rubygems/")
-puts files[7282]
 insert_all(files,3)
 ##Error 7280
   # for i in 3...files.length do
