@@ -1,0 +1,35 @@
+#crete a list of gem data 
+gem_name = c()
+gem_description = c()
+gem_size = c()
+gem_license = c()
+gem_required_ruby = c()
+gem_homepage = c()
+gem_documentation = c()
+gem_source_code = c()
+gem_bug_tracker = c()
+gem_authors = c()
+gem_owners = c()
+gem_dependencies = c()
+
+#get data from mongoDB and insert into list
+for( i in 1:length(pop)) {
+  gem_description = c(gem_description, pop[[i]]$gem_description)
+  gem_name = c(gem_name, pop[[i]]$gem_name)
+  gem_description = c(gem_description, pop[[i]]$gem_description)
+  gem_size = c(gem_size, pop[[i]]$gem_size)
+  gem_license = c(gem_license, pop[[i]]$gem_license)
+  gem_required_ruby = c(gem_required_ruby, pop[[i]]$require_ruby_version)
+  gem_homepage = c(gem_homepage, pop[[i]]$homepage)
+  gem_documentation = c(gem_documentation, pop[[i]]$documentation)
+  gem_source_code = c(gem_source_code, pop[[i]]$source_code)
+  gem_bug_tracker = c(gem_bug_tracker, pop[[i]]$bug_tracker)
+  gem_authors = c(gem_authors, pop[[i]]$authors)
+  gem_owners = c(gem_owners, pop[[i]]$owners)
+  gem_dependencies = c(gem_dependencies, pop[[i]]$dependencies)
+ 
+}
+gem_description = sapply(gem_description, as.numeric)
+gem_owners = sapply(gem_owners, as.numeric)
+max(gem_description)
+gem_description2 = lapply(gem_description, function(x) (x-min(gem_description))/(max(gem_description)-min(gem_description)))
