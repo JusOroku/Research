@@ -32,8 +32,8 @@
         gem_dependencies = c(gem_dependencies, mongo_object[[i]]$dependencies)
       }
       
-      #change all of numeri0c string data into numeric value
-      
+      #change all of numeric string data into numeric value
+      #then normalize all of varies attribute into range value 0..1
       gem_description = sapply(gem_description, as.numeric)
       gem_description2 = lapply(gem_description, function(x) (x-min(gem_description))/(max(gem_description)-min(gem_description)))
       gem_size = sapply(gem_size, as.numeric) 
@@ -104,9 +104,9 @@
       collection_name <- "rubygems.rubygem_revised2"
       pop <- mongo.find.all(mongo_connection, collection_name)
       #mongo.count(mongo_connection, collection_name)
-      gem_matrix = create_gems_matrix(pop)
-      gem_matrix
-      normalize_distance_matrix = calculate_distance_matrix(gem_matrix)
+      #gem_matrix = create_gems_matrix(pop)
+      #gem_matrix
+      #normalize_distance_matrix = calculate_distance_matrix(gem_matrix)
     } else {
       print("Connect to Mongo DB First")
     }
