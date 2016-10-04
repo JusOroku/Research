@@ -2,7 +2,7 @@ require 'nokogiri'
 require 'csv'
 #for each gems in category, get score of each gems and keep it in csv files
 #outputs file will be used in R language to find outlier
-
+#Some gems from ruby toolbox cannot be used because thet didn:t have a data in official rubygems
 def open_files_nokogiri(file_name)
   doc = File.open(file_name) { |f| Nokogiri::HTML(f)}
   return doc
